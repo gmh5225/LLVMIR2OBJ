@@ -99,16 +99,16 @@ int main(int argc, char *argv[]) {
       break;
     }
 
+    InitializeAllTargets();
+    InitializeAllTargetMCs();
+    InitializeAllAsmPrinters();
+    InitializeAllAsmParsers();
+    
     auto &M = *(Module.get());
     auto StrTriple = M.getTargetTriple();
     Triple TheTriple;
     TheTriple.setTriple(StrTriple);
     std::cout << "Triple:" << StrTriple << std::endl;
-
-    InitializeAllTargets();
-    InitializeAllTargetMCs();
-    InitializeAllAsmPrinters();
-    InitializeAllAsmParsers();
 
     auto &DataLayout = M.getDataLayout();
     auto PointerSize = DataLayout.getPointerSize();
