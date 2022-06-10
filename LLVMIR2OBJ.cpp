@@ -110,9 +110,6 @@ int main(int argc, char *argv[]) {
     TheTriple.setTriple(StrTriple);
     std::cout << "Triple:" << StrTriple << std::endl;
 
-    auto &DataLayout = M.getDataLayout();
-    auto PointerSize = DataLayout.getPointerSize();
-
     std::string Error;
     auto TheTarget = TargetRegistry::lookupTarget(StrTriple, Error);
     if (!TheTarget) {
